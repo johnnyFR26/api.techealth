@@ -28,6 +28,7 @@ model Doctor {
   specialty    String
   phone        String?
   email        String?
+  password     String
   hireDate     DateTime
   appointments Appointment[]
 }
