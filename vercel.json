@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "server.ts",
+        "src": "index.ts",
         "use": "@vercel/node",
         "config": {
           "includeFiles": ["**/*.prisma", "prisma/**", "dev.db"]
@@ -12,7 +12,7 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "server.ts"
+        "dest": "index.ts"
       }
     ],
     "buildCommand": "npm run build"
