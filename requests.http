@@ -1,0 +1,46 @@
+### Listar todos os médicos
+GET http://localhost:3000/doctors
+Content-Type: application/json
+
+###
+
+### Buscar médico por ID
+GET http://localhost:3000/doctors/1
+Content-Type: application/json
+
+###
+
+### Criar um novo médico
+POST http://localhost:3000/doctors
+Content-Type: application/json
+
+{
+  "name": "Dr. John Doe",
+  "crm": "123456",
+  "specialty": "Cardiology",
+  "phone": "+123456789",
+  "email": "john.doe@example.com",
+  "password": "securePassword123",
+  "hireDate": "2024-12-14T00:00:00.000Z"
+}
+
+###
+
+### Atualizar um médico por ID
+PUT http://localhost:3000/doctors/1
+Content-Type: application/json
+
+{
+  "name": "Dr. Jane Doe",
+  "specialty": "Neurology",
+  "phone": "+987654321",
+  "email": "jane.doe@example.com",
+  "password": "newSecurePassword456",
+  "hireDate": "2023-06-01T00:00:00.000Z"
+}
+
+###
+
+### Deletar um médico por ID
+DELETE http://localhost:3000/doctors/1
+Content-Type: application/json

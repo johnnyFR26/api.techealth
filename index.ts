@@ -1,15 +1,20 @@
-import fastify from "fastify";
-import corsMiddleware from "./middlewares/cors";
-import { registerRoutes } from "./routes";
+import fastify from "fastify"
+import corsMiddleware from "./middlewares/cors"
+import { registerRoutes } from "./routes"
+import cors from '@fastify/cors'
+import { mainScreen } from "./lib/mainScreen"
 
-const server = fastify();
+const server = fastify()
 
-server.register(corsMiddleware)
 registerRoutes(server)
+
+server.register(cors, {
+  origin: "*",
+})
 
 server.get("/", async (request, reply) => {
   reply.type("text/html");
-  const html = "<h1>Techealth API</h1>";
+  const html = await mainScreen()
   reply.send(html);
 });
 

@@ -7,8 +7,7 @@ export class DoctorController {
     async getAllDoctors(request: FastifyRequest, reply: FastifyReply) {
     try {
       const doctors = await db.doctor.findMany();
-      const stream = Readable.from(JSON.stringify(doctors));
-      reply.type('application/json').send(stream);
+      reply.type('application/json').send(doctors);
     } catch (error) {
       reply.status(500).send({ error: 'Error fetching doctors' });
     }
@@ -25,26 +24,25 @@ export class DoctorController {
         return;
       }
 
-      const stream = Readable.from(JSON.stringify(doctor));
-      reply.type('application/json').send(stream);
+      reply.type('application/json').send(doctor)
     } catch (error) {
       reply.status(500).send({ error: 'Error fetching doctor' });
     }
   }
 
-  async createDoctor(request: FastifyRequest<{ Body: { name: string; crm: string; specialty: string; phone?: string; email?: string } }>, reply: FastifyReply) {
-    const { name, crm, specialty, phone, email } = request.body;
+  async createDoctor(request: FastifyRequest<{ Body: { name: string; crm: string; specialty: string; phone?: string; email?: string; password?: string; hireDate?: Date } }>, reply: FastifyReply) {
+    const { name, crm, specialty, phone, email, password, hireDate } = request.body;
 
     try {
       const doctor = await db.doctor.create({
         //@ts-expect-error
-        data: { name, crm, specialty, phone, email },
+        data: { name, crm, specialty, phone, email, password, hireDate },
       });
 
       const stream = Readable.from(JSON.stringify(doctor));
       reply.status(201).type('application/json').send(stream);
     } catch (error) {
-      reply.status(500).send({ error: 'Error creating doctor' });
+      reply.status(500).send({ error: 'Error creating doctor', details: error });
     }
   }
 
