@@ -15,8 +15,8 @@ POST http://localhost:3000/doctors
 Content-Type: application/json
 
 {
-  "name": "Johnny Fontes",
-  "crm": "CRM-123456",
+  "name": "",
+  "crm": "123456",
   "specialty": "Cardiology",
   "phone": "+123456789",
   "email": "john.doe@example.com",

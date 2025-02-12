@@ -29,6 +29,8 @@ export const mainScreen = async () => {
                 font-size: 1.5rem;
             }
             .content {
+                display: flex;
+                margin-left: 20px;
                 padding: 20px;
             }
             .menu {
@@ -86,6 +88,19 @@ export const mainScreen = async () => {
                 <a href="https://swagger.io" target="_blank" style="color: #fff; text-decoration: none; font-size: 0.9rem;">Swagger Docs</a>
             </div>
         </div>
+
+        <div class="content"></div>
+            <ul class="menu">
+                <li><a href="/doctors">Doctors</a></li> <p> route of doctors data. methods: <ul>
+                    <li>GET - get all doctors "/doctors"</li>
+                    <li>GET - get doctor by id "/doctors/:id"</li>
+                    <li>POST - create a new doctor "/doctors"</li>
+                    <li>PUT - update a doctor by id "/doctors/:id"</li>
+                    <li>DELETE - delete a doctor by id "/doctors/:id"</li>
+                    </ul> </p>
+                 <br> <hr> <br>
+                <li><a href="/patients">Patients</a></li>
+            </ul>
         
         
     </body>

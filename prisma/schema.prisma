@@ -27,7 +27,7 @@ model Doctor {
   crm          String        @unique
   specialty    String
   phone        String?
-  email        String?
+  email        String?       @unique
   password     String
   hireDate     DateTime
   appointments Appointment[]
